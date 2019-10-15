@@ -29,13 +29,11 @@ const checkForMatch = () => {
 const disableCards = () => {
   firstCard.removeEventListener('click', flipCard);
   secondCard.removeEventListener('click', flipCard);
-  disableSuccess();
-};
 
-const disableSuccess = () => {
   setTimeout(() => {
     firstCard.classList.add('done');
     secondCard.classList.add('done');
+
     resetBoard();
   }, 150);
 };
