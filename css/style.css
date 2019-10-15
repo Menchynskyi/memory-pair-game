@@ -15,7 +15,8 @@ body {
     height: 640px;
     margin: auto;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap;    
+    perspective: 1000px;
 }
 
 .memory-card {
@@ -23,6 +24,48 @@ body {
     height: calc(33% - 10px);
     margin: 5px;
     position: relative;
+    background-color: rgb(189, 161, 5);
     box-shadow: 1px 1px 1px rgba(0,0,0,.3);
     border-radius: 5px;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.memory-card:active {
+    transform: scale(0.96);
+    transition: transform 0.2s;
+}
+
+.memory-card:hover {
+    cursor: pointer;
+}
+
+.front-card,
+.back-card {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    position: absolute;
+    border-radius: 5px;
+    backface-visibility: hidden;
+}
+
+.back-card {
+    transform: rotateY(180deg);
+}
+
+.flip-card {
+    transform: rotateY(180deg);
+}
+
+.done {
+    animation-name: success;
+    animation-duration: 1s;
+    background-color: rgba(59, 185, 114, 0.5);
+}
+
+@keyframes success {
+    from { background-color: rgb(189, 161, 5); }
+    to { background-color: rgba(59, 185, 114, 0.5); }
 }
