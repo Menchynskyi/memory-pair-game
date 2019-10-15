@@ -31,11 +31,17 @@ const disableCards = () => {
   secondCard.removeEventListener('click', flipCard);
 
   setTimeout(() => {
-    firstCard.classList.add('done');
-    secondCard.classList.add('done');
-
+    firstCard.classList.add('disabled-card');
+    secondCard.classList.add('disabled-card');
+    setTimeout(checkForWin, 500);
     resetBoard();
   }, 150);
+};
+
+const checkForWin = () => {
+  if (cards.every(card => card.classList.contains('disabled-card'))) {
+    alert('You win!');
+  }
 };
 
 const unflipCards = () => {
